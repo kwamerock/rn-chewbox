@@ -1,0 +1,19 @@
+export const state = {
+    groups: {},
+    currentGroupId: null,
+    groupPerPage: 10,
+    totalRecords: 10,
+    activePage: 1,
+    groupsList: state =>
+      Object.values(state.groups)
+        .sort((a, b) => {
+          if (a.createdAt > b.createdAt) {
+            return 1
+          } else if (a.createdAt < b.createdAt) {
+            return -1
+          }
+
+          return 0
+        })
+        .slice(0, state.groupPerPage)
+  }
